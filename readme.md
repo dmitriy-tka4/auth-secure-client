@@ -17,9 +17,9 @@ Back-end, REST API на Express, здесь [https://github.com/dmitriy-tka4/aut
 * Обработка ошибок (`ErrorInterceptor`)
 * Для показа ошибок и сообщений добавлен `ngx-toastr`
 
-## TODO
+Схема обновления токенов - на рисунке:
 
-*
+![](docs/scheme-client-refresh.png)
 
 ## Feedback
 
