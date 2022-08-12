@@ -1,0 +1,10 @@
+<p>profile</p>
+
+<p><a routerLink="/">Главная</a></p>
+
+<div *ngIf="user">
+  <h2>{{ user.email }}</h2>
+
+  <p>ID: {{ user._id }}</p>
+  <p>Created at: {{ user.createdAt | date: 'dd.MM.yyyy' }}</p>
+</div>

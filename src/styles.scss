@@ -1,1 +1,68 @@
 /* You can add global styles to this file, and also import other style files */
+
+* {
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 30px;
+  background-color: #f2f2f2;
+}
+
+a {
+  text-decoration: underline;
+  color: rgb(0, 123, 172);
+  transition: all 0.5s ease;
+  cursor: pointer;
+
+  &:hover {
+    color: rgb(7, 40, 59);
+  }
+}
+
+.control-error {
+  font-size: 12px;
+  margin: -5px 0 10px;
+  color: crimson;
+}
+
+input {
+  display: inline-block;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 0 10px;
+  padding: 7px 15px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+input.ng-touched.ng-invalid {
+  border-color: crimson;
+}
+
+input.ng-touched.ng-valid {
+  border-color: rgb(3, 94, 51);
+}
+
+button {
+  display: inline-block;
+  margin: 0 5px 10px 0;
+  padding: 7px 15px;
+  border: none;
+  border-radius: 3px;
+  color: white;
+  background-color: rgb(0, 123, 172);
+  transition: all 0.5s ease;
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgb(7, 40, 59);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    pointer-events: none;
+  }
+}

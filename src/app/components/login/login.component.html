@@ -1,0 +1,33 @@
+<p>login</p>
+
+<p><a routerLink="/">Главная</a></p>
+
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <div>
+    <input type="email" placeholder="email" formControlName="email">
+    <div class="control-error"
+         *ngIf="email?.errors?.['required'] && email?.touched">
+      Поле обязательное
+    </div>
+    <div class="control-error"
+         *ngIf="email?.errors?.['email'] && email?.touched">
+      Должен быть указан корректный email
+    </div>
+  </div>
+  <div>
+    <input type="password" placeholder="password" formControlName="password">
+    <div class="control-error"
+         *ngIf="password?.errors?.['required'] && password?.touched">
+      Поле обязательное
+    </div>
+    <div class="control-error"
+         *ngIf="password?.errors?.['minlength'] && password?.touched">
+      Минимальная длина пароля 6 символов
+    </div>
+  </div>
+  <div>
+    <button type="submit" [disabled]="loginForm.invalid && loginForm.touched">
+      Войти
+    </button>
+  </div>
+</form>

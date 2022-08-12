@@ -1,0 +1,21 @@
+<p>home</p>
+
+<p *ngIf="!currentUser"><a routerLink="/profile">Войти в профиль для неавторизованного пользователя</a></p>
+
+<p *ngIf="!currentUser; else elseBlock">
+  <a routerLink="/login">Войти</a> |
+  <a routerLink="/signup">Регистрация</a>
+</p>
+
+<ng-template #elseBlock>
+<p>
+  <a routerLink="/profile">Профиль ({{ currentUser!.email }})</a> |
+  <a (click)="logout()">Выйти</a>
+</p>
+</ng-template>
+
+<ul *ngIf="users">
+  <li *ngFor="let user of users">
+    {{ user.email }}
+  </li>
+</ul>
