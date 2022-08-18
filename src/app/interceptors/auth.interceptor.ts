@@ -9,12 +9,10 @@ import {
 import { BehaviorSubject, catchError, filter, Observable, retry, switchMap, take, throwError } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 import { TokensInterface } from '../interfaces/token.interface';
-import { UserInterface } from '../interfaces/user.interface';
 import { ToastrService } from 'ngx-toastr';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
-
   private refreshTokenSubject: BehaviorSubject<any> = new BehaviorSubject<any>(null);
   private isRefreshing: boolean = false;
 
@@ -64,15 +62,16 @@ export class AuthInterceptor implements HttpInterceptor {
       return this.authService.refresh()
         .pipe(
           switchMap((data) => {
-            // response с сервера устанавливает куки с новым RT
-            // возвращает новый АТ, который нужно добавить к запросу
+            // response с сервера устанавливает куки с новым refresh token
+            // возвращает новый access token, который нужно добавить к запросу
             const tokens = data as TokensInterface;
+            const accessToken = tokens.accessToken;
 
             this.isRefreshing = false;
-            this.refreshTokenSubject.next(tokens.accessToken);
-            this.authService.setAccessToken(tokens.accessToken);
+            this.refreshTokenSubject.next(accessToken);
+            this.authService.setAccessToken(accessToken);
 
-            return next.handle(this.addAccessToken(request, tokens.accessToken));
+            return next.handle(this.addAccessToken(request, accessToken));
           }));
     }
 
